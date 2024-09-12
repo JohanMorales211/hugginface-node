@@ -1,21 +1,32 @@
 import { HfInference } from "@huggingface/inference";
-import {config} from 'dotenv'
+import { config } from "dotenv";
+import fs from 'fs';
 
-config()
+config();
 
 const hf = new HfInference(process.env.HF_ACCES_TOKEN);
 
-const imageURL =
-  "https://t2.ea.ltmcdn.com/es/posts/1/6/2/10_curiosidades_del_golden_retriever_21261_orig.jpg";
+const model = "black-forest-labs/FLUX.1-dev";
+const prompt = "A cat in Antarctica with a sign that says hello world";
 
-const model = "Salesforce/blip-image-captioning-large";
+try {
+  const result = await hf.textToImage({
+    inputs: prompt,
+    model,
+    parameters: {
+      height: 1024,
+      width: 1024,
+      guidance_scale: 3.5,
+      num_inference_steps: 50,
+      max_sequence_length: 512,
+    },
+  });
 
-  const response = await fetch(imageURL);
-  const blob = await response.blob();
+  const buffer = await result.arrayBuffer();
+  fs.writeFileSync('image-generated.png', Buffer.from(buffer)); 
 
-  const result = await hf.imageToText({
-    data: blob,
-    model
-  })
+  console.log('Image downloaded as image-generated.png');
 
-  console.log(result)
+} catch (error) {
+  console.error("Error generating or downloading image:", error); 
+}
