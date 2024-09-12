@@ -20,7 +20,7 @@ Este proyecto te permite crear imágenes únicas utilizando el modelo de lenguaj
 
 1. **Clona el repositorio:**
    ```bash
-   git clone https://github.com/tu-usuario/hugginface-node.git
+   git clone https://github.com/JohanMorales211/hugginface-node.git
    ```
 2. **Navega al directorio del proyecto:**
    ```bash
@@ -35,7 +35,7 @@ Este proyecto te permite crear imágenes únicas utilizando el modelo de lenguaj
 
 1. **Obtén un token de acceso de Hugging Face:**  
    Visita [Hugging Face](https://huggingface.co/) y crea una cuenta para obtener tu token de acceso.
-2. **Configura el token de acceso:**
+2. **Configura el token de acceso:**https://github.com/tu-usuario/hugginface-node.git
    Crea un archivo `.env` en la raíz del proyecto y agrega la siguiente línea, reemplazando `tu_token_de_acceso` con tu token real:
    ```
    HF_ACCES_TOKEN=tu_token_de_acceso 
